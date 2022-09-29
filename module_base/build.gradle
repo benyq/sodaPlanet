@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
 
@@ -7,13 +7,11 @@ android {
     compileSdk build_versions.compile_sdk
 
     defaultConfig {
-        applicationId "com.benyq.sodaplanet"
         minSdk build_versions.min_sdk
         targetSdk build_versions.target_sdk
-        versionCode build_versions.version_code
-        versionName build_versions.version_name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -29,12 +27,8 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
-
-    implementation project(':module_base')
+    api project(':module_lib')
 }
