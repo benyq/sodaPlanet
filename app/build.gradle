@@ -37,4 +37,8 @@ android {
 dependencies {
 
     implementation project(':module_base')
+
+    if (!transaction.toBoolean()) {
+        implementation project(':transaction')
+    }
 }

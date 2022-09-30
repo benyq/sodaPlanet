@@ -16,3 +16,4 @@ rootProject.name = "SodaPlanet"
 include ':app'
 include ':module_lib'
 include ':module_base'
+include ':transaction'
