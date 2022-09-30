@@ -4,13 +4,14 @@ if (transaction.toBoolean()) {
     apply plugin: 'com.android.library'
 }
 apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdk rootProject.ext.compile_sdk
+    compileSdk rootProject.compile_sdk
 
     defaultConfig {
-        minSdk rootProject.ext.min_sdk
-        targetSdk rootProject.ext.target_sdk
+        minSdk rootProject.min_sdk
+        targetSdk rootProject.target_sdk
         if (transaction.toBoolean()) {
             applicationId "com.benyq.sodaplanet.transaction"
         }
@@ -46,8 +47,13 @@ android {
 }
 
 dependencies {
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+
     implementation project(':module_base')
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
 }

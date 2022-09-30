@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    compileSdk rootProject.ext.compile_sdk
+    compileSdk rootProject.compile_sdk
 
     defaultConfig {
         applicationId "com.benyq.sodaplanet"
-        minSdk rootProject.ext.min_sdk
-        targetSdk rootProject.ext.target_sdk
-        versionCode rootProject.ext.version_code
-        versionName rootProject.ext.version_name
+        minSdk rootProject.min_sdk
+        targetSdk rootProject.target_sdk
+        versionCode rootProject.version_code
+        versionName rootProject.version_name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -35,6 +35,10 @@ android {
 }
 
 dependencies {
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation project(':module_base')
 

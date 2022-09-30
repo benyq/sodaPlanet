@@ -1,6 +1,9 @@
 package com.benyq.sodaplanet.base
 
 import android.app.Application
+import androidx.room.Room
+import com.benyq.sodaplanet.base.room.SodaPlanetRoomDB
+import com.benyq.sodaplanet.base.room.sodaPlanetDB
 
 /**
  *
@@ -19,6 +22,9 @@ object CommonModuleInit {
     //这个方法包含 最基础的初始化方法，以及其他module的初始化
     fun onInit(app: Application) {
 
+        sodaPlanetDB = Room.databaseBuilder(
+            app, SodaPlanetRoomDB::class.java, "soda_planet_db"
+        ).build()
 
         //组件初始化
         initModuleNames.forEach {

@@ -1,14 +1,15 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
-    compileSdk rootProject.ext.compile_sdk
+    compileSdk rootProject.compile_sdk
 
     defaultConfig {
-        minSdk rootProject.ext.min_sdk
-        targetSdk rootProject.ext.target_sdk
+        minSdk rootProject.min_sdk
+        targetSdk rootProject.target_sdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -30,5 +31,11 @@ android {
 }
 
 dependencies {
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+
     api project(':module_lib')
 }

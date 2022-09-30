@@ -1,4 +1,4 @@
-package com.benyq.module_base
+package com.benyq.sodaplanet.base
 
 import org.junit.Test
 

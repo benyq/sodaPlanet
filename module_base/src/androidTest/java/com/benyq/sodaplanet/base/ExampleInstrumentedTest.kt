@@ -1,4 +1,4 @@
-package com.benyq.module_base
+package com.benyq.sodaplanet.base
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
