@@ -14,9 +14,17 @@ import com.benyq.sodaplanet.base.room.entity.TransactionRecord
  */
 @Dao
 interface TransactionRecordDao {
-    @Query("SELECT * FROM transaction_record")
+    @Query("select * from transaction_record")
     fun getAll(): List<TransactionRecord>
 
     @Insert
     fun addTransactionRecord(vararg record: TransactionRecord)
+
+
+    @Query("select * from transaction_record where (:consumeType is not null and customType == :consumeType) " +
+            "and (:paidType is not null and paidType == :paidType)" +
+            "and createTime between :startTime and :endTime")
+    fun getByCondition(startTime: Long, endTime: Long, consumeType: TransactionRecord.ConsumeType? = null,
+                       paidType: TransactionRecord.PaidType? = null): List<TransactionRecord>
+
 }
