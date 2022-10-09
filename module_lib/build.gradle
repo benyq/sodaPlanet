@@ -46,4 +46,8 @@ dependencies {
     api "androidx.room:room-ktx:$rootProject.roomVersion"
     //coroutines
     api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+    // https://github.com/JessYanCoding/AndroidAutoSize
+    api 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1'
+    // https://github.com/liangjingkanji/BRV
+    api 'com.github.liangjingkanji:BRV:1.3.82'
 }
