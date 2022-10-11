@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.room.Room
 import com.benyq.sodaplanet.base.room.SodaPlanetRoomDB
 import com.benyq.sodaplanet.base.room.sodaPlanetDB
+import com.orhanobut.logger.*
+
 
 /**
  *
@@ -21,7 +23,7 @@ object CommonModuleInit {
 
     //这个方法包含 最基础的初始化方法，以及其他module的初始化
     fun onInit(app: Application) {
-
+        initLog()
         sodaPlanetDB = Room.databaseBuilder(
             app, SodaPlanetRoomDB::class.java, "soda_planet_db"
         ).build()
@@ -41,6 +43,18 @@ object CommonModuleInit {
             }
 
         }
+    }
+
+    private fun initLog() {
+        val formatStrategy: FormatStrategy = PrettyFormatStrategy.newBuilder()
+            .showThreadInfo(true) // (Optional) Whether to show thread info or not. Default true
+            .methodCount(3) // (Optional) How many method line to show. Default 2
+            .methodOffset(7) // (Optional) Hides internal method calls up to offset. Default 5
+            .logStrategy(LogcatLogStrategy()) // (Optional) Changes the log strategy to print out. Default LogCat
+            .tag("sodaPlanet") // (Optional) Global tag for every log. Default PRETTY_LOGGER
+            .build()
+
+        Logger.addLogAdapter(AndroidLogAdapter(formatStrategy))
     }
 }
 

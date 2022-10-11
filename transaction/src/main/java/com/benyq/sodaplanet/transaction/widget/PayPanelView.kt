@@ -3,6 +3,7 @@ package com.benyq.sodaplanet.transaction.widget
 import android.content.Context
 import android.graphics.Rect
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.benyq.sodaplanet.base.ext.toNumberDefault
 import com.benyq.sodaplanet.base.room.entity.TransactionRecord
 import com.benyq.sodaplanet.transaction.R
+import com.benyq.sodaplanet.transaction.data.PaidType
 import com.benyq.sodaplanet.transaction.databinding.ViewPayPanelBinding
 import com.drake.brv.utils.grid
 import com.drake.brv.utils.setup
@@ -28,11 +30,15 @@ class PayPanelView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-    private var clickListener: PayPanelClickListener? = null
+    var itemListener: PayPanelClickListener? = null
 
     private val binding: ViewPayPanelBinding
 
-    var paidType: TransactionRecord.PaidType = TransactionRecord.PaidType.Cash
+    var paidType: PaidType = PaidType.cash
+        set(value) {
+            field = value
+            binding.ivWallet.setImageResource(value.resId)
+        }
 
     init {
         binding = ViewPayPanelBinding.inflate(LayoutInflater.from(context), this, true)
@@ -58,11 +64,15 @@ class PayPanelView @JvmOverloads constructor(
             onBind {
                 findView<TextView>(R.id.tvContent).text = getModel<PanelButtonData>().text
             }
-            R.id.item.onClick {
+            R.id.item.onFastClick {
                 dialClick(getModel())
             }
 
         }.models = buildModels()
+
+        binding.ivWallet.setOnClickListener {
+            itemListener?.onClickWallet()
+        }
     }
 
     private fun dialClick(data: PanelButtonData) {
@@ -72,14 +82,14 @@ class PayPanelView @JvmOverloads constructor(
             var sum = 0f
             if (text.contains("+")) {
                 val numbers = payAmount.split("+")
-                numbers.forEachIndexed { index, s ->
+                numbers.forEachIndexed { _, s ->
                     sum += s.toNumberDefault(0f)
                 }
             }else if (text.contains("-")) {
                 val numbers = payAmount.split("-")
                 numbers.forEachIndexed { index, s ->
                     if (index == 0) sum = s.toNumberDefault(0f)
-                    else sum -= s.toInt()
+                    else sum -= s.toNumberDefault(0f)
                 }
             }else {
                 return text
@@ -89,8 +99,10 @@ class PayPanelView @JvmOverloads constructor(
 
         when (data.code) {
             "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" -> {
+                val lastNumber = payAmount.split("[+\\-]".toRegex()).last()
+
                 if (payAmount == "0") payAmount = data.text
-                else if (payAmount.matches(Regex("[0-9]*\\.[0-9]{2}"))){
+                else if (lastNumber.matches(Regex("[0-9]*\\.[0-9]{2}"))){
                     //do nothing
                 }
                 else payAmount += data.text
@@ -100,18 +112,19 @@ class PayPanelView @JvmOverloads constructor(
                 payAmount = "$result${data.text}"
             }
             "dot" -> {
-                if (payAmount.isEmpty()) payAmount = "0" + data.text
-                else if (!payAmount.contains(".")) payAmount += data.text
+                val lastNumber = payAmount.split("[+\\-]".toRegex()).last()
+                if (lastNumber.isEmpty()) payAmount += "0" + data.text
+                else if (!lastNumber.contains(".")) payAmount += data.text
             }
             "delete" -> {
                 payAmount = payAmount.substring(0, payAmount.length - 1)
                 if (payAmount.isEmpty()) payAmount = "0"
             }
             "date" -> {
-                clickListener?.onClickDate()
+                itemListener?.onClickDate()
             }
             "done" -> {
-                clickListener?.onClickDone(payAmount, paidType)
+                itemListener?.onClickDone(payAmount, paidType)
             }
         }
         binding.tvPayAmount.text = payAmount
@@ -142,6 +155,7 @@ class PayPanelView @JvmOverloads constructor(
 
     interface PayPanelClickListener {
         fun onClickDate()
-        fun onClickDone(amount: String, paidType: TransactionRecord.PaidType)
+        fun onClickDone(amount: String, paidType: PaidType)
+        fun onClickWallet()
     }
 }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <View
         android:layout_width="match_parent"
@@ -24,11 +25,11 @@
             android:layout_height="50dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/shape_circle_border"
-            android:padding="15dp"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_transaction_wallet" />
+            app:srcCompat="@drawable/ic_pay_cash" />
 
         <LinearLayout
             android:layout_width="0dp"

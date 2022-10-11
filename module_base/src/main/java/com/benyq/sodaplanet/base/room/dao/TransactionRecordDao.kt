@@ -18,13 +18,13 @@ interface TransactionRecordDao {
     fun getAll(): List<TransactionRecord>
 
     @Insert
-    fun addTransactionRecord(vararg record: TransactionRecord)
+    fun addTransactionRecord(record: TransactionRecord): Long
 
 
     @Query("select * from transaction_record where (:consumeType is not null and customType == :consumeType) " +
             "and (:paidType is not null and paidType == :paidType)" +
             "and createTime between :startTime and :endTime")
-    fun getByCondition(startTime: Long, endTime: Long, consumeType: TransactionRecord.ConsumeType? = null,
-                       paidType: TransactionRecord.PaidType? = null): List<TransactionRecord>
+    fun getByCondition(startTime: Long, endTime: Long, consumeType: Int? = null,
+                       paidType: Int? = null): List<TransactionRecord>
 
 }

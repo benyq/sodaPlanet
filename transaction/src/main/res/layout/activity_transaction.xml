@@ -6,9 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.benyq.sodaplanet.transaction.TransactionActivity">
 
-    <FrameLayout
-        android:id="@+id/flContainer"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/transaction_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        app:navGraph="@navigation/nav_transaction" />
 
 </FrameLayout>
