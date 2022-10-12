@@ -20,6 +20,7 @@ import com.benyq.sodaplanet.transaction.databinding.FragmentTransactionAddRecord
 import com.benyq.sodaplanet.transaction.widget.PayPanelView
 import com.drake.brv.utils.grid
 import com.drake.brv.utils.setup
+import com.orhanobut.logger.Logger
 import kotlinx.coroutines.launch
 
 /**

@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.benyq.sodaplanet.base.ext.dp
 import com.benyq.sodaplanet.base.ext.toNumberDefault
 import com.benyq.sodaplanet.base.room.entity.TransactionRecord
 import com.benyq.sodaplanet.transaction.R
@@ -53,8 +54,8 @@ class PayPanelView @JvmOverloads constructor(
                 parent: RecyclerView,
                 state: RecyclerView.State
             ) {
-                outRect.right = 10
-                outRect.left = 10
+                outRect.right = 6.dp.toInt()
+                outRect.left = 6.dp.toInt()
                 outRect.top = 10
                 outRect.bottom = 10
             }
@@ -124,7 +125,7 @@ class PayPanelView @JvmOverloads constructor(
                 itemListener?.onClickDate()
             }
             "done" -> {
-                itemListener?.onClickDone(payAmount, paidType)
+                itemListener?.onClickDone(calculate(payAmount), paidType)
             }
         }
         binding.tvPayAmount.text = payAmount
