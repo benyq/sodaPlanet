@@ -1,5 +1,6 @@
 package com.benyq.sodaplanet.transaction.ui.add
 
+import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,7 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.benyq.sodaplanet.base.base.BaseFragment
+import com.benyq.sodaplanet.base.ext.fullScreen
 import com.benyq.sodaplanet.base.ext.load
+import com.benyq.sodaplanet.base.ext.setStatusBarMode
 import com.benyq.sodaplanet.transaction.R
 import com.benyq.sodaplanet.transaction.data.ConsumeType
 import com.benyq.sodaplanet.transaction.data.PaidType
@@ -47,7 +50,12 @@ class TransactionAddRecordFragment : BaseFragment<FragmentTransactionAddRecordBi
             onBind {
                 val data = getModel<ConsumeType>()
                 findView<ImageView>(R.id.ivConsume).load(data.resId)
-                findView<ImageView>(R.id.ivBG).setBackgroundColor(ContextCompat.getColor(requireActivity(), data.colorId))
+                findView<ImageView>(R.id.ivBG).setBackgroundColor(
+                    ContextCompat.getColor(
+                        requireActivity(),
+                        data.colorId
+                    )
+                )
                 findView<ImageView>(R.id.ivCover).isVisible = data.selected
                 findView<TextView>(R.id.tvContent).text = data.message
             }
@@ -65,7 +73,7 @@ class TransactionAddRecordFragment : BaseFragment<FragmentTransactionAddRecordBi
         binding.ivBack.setOnClickListener {
             findNavController().navigateUp()
         }
-        binding.payPanelView.itemListener = object: PayPanelView.PayPanelClickListener {
+        binding.payPanelView.itemListener = object : PayPanelView.PayPanelClickListener {
             override fun onClickDate() {
             }
 
@@ -92,7 +100,7 @@ class TransactionAddRecordFragment : BaseFragment<FragmentTransactionAddRecordBi
                 vm.addRecordResult.collect {
                     if (it) {
                         findNavController().navigateUp()
-                    }else {
+                    } else {
                         Toast.makeText(requireContext(), "数据添加失败", Toast.LENGTH_SHORT).show()
                     }
                 }

@@ -10,7 +10,7 @@ task clean(type: Delete) {
 }
 
 ext{
-    min_sdk = 21
+    min_sdk = 23
     target_sdk = 29
     compile_sdk = 31
     version_code = 1
