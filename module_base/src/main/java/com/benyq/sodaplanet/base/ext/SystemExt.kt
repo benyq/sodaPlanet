@@ -8,6 +8,11 @@ import android.view.WindowManager
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 
 /**
@@ -54,11 +59,8 @@ fun beforeSpecificVersion(version: Int): Boolean = Build.VERSION.SDK_INT < versi
 fun Activity.setStatusBarMode(color: Int, dark: Boolean) {
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
     window.statusBarColor = color
-
     val insetsControllerCompat = WindowInsetsControllerCompat(window, window.decorView)
     insetsControllerCompat.isAppearanceLightStatusBars = dark
-    insetsControllerCompat.hide(WindowInsetsCompat.Type.statusBars())
-
 }
 
 fun Fragment.setStatusBarMode(color: Int, dark: Boolean) {
@@ -83,4 +85,16 @@ fun Activity.fullScreen(full: Boolean) {
 
 fun Fragment.fullScreen(full: Boolean) {
     requireActivity().fullScreen(full)
+}
+
+
+inline fun Fragment.launchAndRepeatWithViewLifecycle(
+    mainActiveState: Lifecycle.State = Lifecycle.State.STARTED,
+    crossinline block: suspend CoroutineScope.()->Unit
+) {
+    viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleOwner.lifecycle.repeatOnLifecycle(mainActiveState) {
+            block()
+        }
+    }
 }

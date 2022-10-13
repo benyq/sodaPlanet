@@ -3,6 +3,7 @@ package com.benyq.sodaplanet.transaction
 import android.app.Application
 import com.benyq.sodaplanet.base.CommonModuleInit
 import com.benyq.sodaplanet.base.IModuleInit
+import com.drake.brv.utils.BRV
 
 /**
  *
@@ -21,6 +22,6 @@ class TransactionApp : Application(){
 
 class TransactionInit: IModuleInit {
     override fun onInitAhead(app: Application) {
-
+        BRV.modelId = BR.m
     }
 }

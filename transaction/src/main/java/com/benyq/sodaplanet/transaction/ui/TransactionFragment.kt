@@ -1,5 +1,6 @@
 package com.benyq.sodaplanet.transaction.ui
 
+import android.graphics.Color
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -7,6 +8,7 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.benyq.sodaplanet.base.base.BaseFragment
+import com.benyq.sodaplanet.base.ext.setStatusBarMode
 import com.benyq.sodaplanet.transaction.R
 import com.benyq.sodaplanet.transaction.databinding.FragmentTransactionBinding
 import com.benyq.sodaplanet.transaction.ui.analysis.TransactionAnalysisFragment
@@ -26,6 +28,8 @@ class TransactionFragment : BaseFragment<FragmentTransactionBinding>() {
     override fun provideViewBinding() = FragmentTransactionBinding.inflate(layoutInflater)
 
     override fun onFragmentViewCreated(view: View) {
+
+        setStatusBarMode(Color.WHITE, true)
 
         binding.vpFragment.isUserInputEnabled = false
         binding.vpFragment.adapter = object : FragmentStateAdapter(this) {

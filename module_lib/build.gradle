@@ -68,4 +68,7 @@ dependencies {
 
     // https://github.com/orhanobut/logger
     api 'com.orhanobut:logger:2.2.0'
+
+    //https://github.com/LuckyCodeer/Android-PickerView
+    api 'com.github.LuckyCodeer.Android-PickerView:pickerview:4.2.5'
 }

@@ -16,8 +16,8 @@ import androidx.room.TypeConverters
 data class TransactionRecord(
     //金额, 分为单位，1元 == 100分
     var amount: String,
-    var customType: Int,
-    var paidType: Int,
+    val customType: Int,
+    val paidType: Int,
     val createTime: Long = System.currentTimeMillis(),
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,

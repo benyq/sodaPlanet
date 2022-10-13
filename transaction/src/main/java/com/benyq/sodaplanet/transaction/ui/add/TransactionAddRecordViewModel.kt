@@ -40,10 +40,4 @@ class TransactionAddRecordViewModel(application: Application) : BaseViewModel(ap
             "${amount}00"
         }
     }
-
-    private fun fen2yuan(amount: String): String {
-        val part1 = amount.substring(0, amount.length - 2)
-        val part2 = amount.substring(amount.length - 2, amount.length )
-        return "${part1}.${part2}"
-    }
 }

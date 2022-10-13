@@ -1,7 +1,6 @@
 package com.benyq.sodaplanet.base.ext
 
 import android.util.Log
-
 /**
  *
  * @author benyq
@@ -44,3 +43,4 @@ fun Boolean?.isFalse(
         isTrue()
     }
 }
+

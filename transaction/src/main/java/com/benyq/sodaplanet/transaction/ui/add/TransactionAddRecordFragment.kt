@@ -47,18 +47,7 @@ class TransactionAddRecordFragment : BaseFragment<FragmentTransactionAddRecordBi
         binding.rvConsume.grid(4).setup {
             var oldPosition = 0
             addType<ConsumeType>(R.layout.item_consume_type)
-            onBind {
-                val data = getModel<ConsumeType>()
-                findView<ImageView>(R.id.ivConsume).load(data.resId)
-                findView<ImageView>(R.id.ivBG).setBackgroundColor(
-                    ContextCompat.getColor(
-                        requireActivity(),
-                        data.colorId
-                    )
-                )
-                findView<ImageView>(R.id.ivCover).isVisible = data.selected
-                findView<TextView>(R.id.tvContent).text = data.message
-            }
+
             R.id.item.onClick {
                 getModel<ConsumeType>(oldPosition).selected = false
                 getModel<ConsumeType>(layoutPosition).selected = true
