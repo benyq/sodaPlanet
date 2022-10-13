@@ -106,6 +106,7 @@ class TransactionRecordFragment : BaseFragment<FragmentTransactionRecordBinding>
         //不知道为什么, set(Calendar.HOUR_OF_DAY, 0) 一直是 12:00:00， 百度说是 JDK问题 ?
         //currentCalendar.timeInMillis 获取是 8:00:00
         //currentCalendar.time.time 获取是 12:00:00
+        // 妈的，google模拟器的锅
         currentCalendar.set(Calendar.HOUR_OF_DAY, 0)
         currentCalendar.set(Calendar.MINUTE, 0)
         currentCalendar.set(Calendar.SECOND, 0)
@@ -114,11 +115,12 @@ class TransactionRecordFragment : BaseFragment<FragmentTransactionRecordBinding>
 
         val first = currentCalendar.getActualMinimum(Calendar.DAY_OF_MONTH)
         currentCalendar.set(Calendar.DAY_OF_MONTH, first)
-        val start = currentCalendar.time.time - 43200_000
+        val start = currentCalendar.time.time
 
         val second: Int = currentCalendar.getActualMaximum(Calendar.DAY_OF_MONTH)
         currentCalendar.set(Calendar.DAY_OF_MONTH, second)
-        val end = currentCalendar.time.time + 43200_000
+        currentCalendar.set(Calendar.HOUR_OF_DAY, 24)
+        val end = currentCalendar.time.time
 
         Logger.d("start: $start, end: $end")
         vm.getRecordTime(start, end)
