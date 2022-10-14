@@ -16,28 +16,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivBG"
+        <com.benyq.sodaplanet.transaction.widget.ConsumeView
+            android:id="@+id/consumeView"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="10dp"
+            drawableRes="@{m.consumeType.resId}"
+            bgColor="@{m.consumeType.colorId}"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:shapeAppearanceOverlay="@style/circleStyle"
-            android:background="@{m.consumeType.colorId}"
-            tools:background="@color/blue_500" />
-
-        <ImageView
-            android:id="@+id/ivConsume"
-            android:layout_width="23dp"
-            android:layout_height="23dp"
-            app:layout_constraintBottom_toBottomOf="@id/ivBG"
-            app:layout_constraintEnd_toEndOf="@id/ivBG"
-            app:layout_constraintStart_toStartOf="@id/ivBG"
-            app:layout_constraintTop_toTopOf="@id/ivBG"
-            android:src="@{m.consumeType.resId}"
-            tools:src="@drawable/ic_food1" />
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
             android:id="@+id/tvConsumeType"
@@ -46,9 +32,9 @@
             android:layout_marginStart="10dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@id/ivBG"
-            app:layout_constraintStart_toEndOf="@id/ivBG"
-            app:layout_constraintTop_toTopOf="@id/ivBG"
+            app:layout_constraintBottom_toBottomOf="@id/consumeView"
+            app:layout_constraintStart_toEndOf="@id/consumeView"
+            app:layout_constraintTop_toTopOf="@id/consumeView"
             android:text="@{m.consumeType.message}"
             tools:text="外卖" />
 
@@ -61,7 +47,7 @@
             android:textColor="@color/color_pay_amount"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@id/tvPayUnit"
-            app:layout_constraintTop_toTopOf="@id/ivBG"
+            app:layout_constraintTop_toTopOf="@id/consumeView"
             android:text="@{m.record.amount}"
             tools:text="11.56" />
 
@@ -73,7 +59,7 @@
             android:textColor="@color/color_pay_amount"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/ivBG"
+            app:layout_constraintTop_toTopOf="@id/consumeView"
             android:text="元" />
 
         <TextView
@@ -84,7 +70,7 @@
             android:textColor="@color/color_2E2E2E"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/ivBG"
+            app:layout_constraintBottom_toBottomOf="@id/consumeView"
             android:text="@{m.paidType.message}"
             tools:text="现金" />
 
@@ -93,7 +79,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="10dp"
             android:background="@color/dark_grey"
-            app:layout_constraintStart_toEndOf="@id/ivBG"
+            app:layout_constraintStart_toEndOf="@id/consumeView"
             app:layout_constraintTop_toBottomOf="@id/tvPaidType"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.benyq.sodaplanet.base.ext.dp
+import com.benyq.sodaplanet.base.ext.textTrim
 import com.benyq.sodaplanet.base.ext.toNumberDefault
 import com.benyq.sodaplanet.base.room.entity.TransactionRecord
 import com.benyq.sodaplanet.transaction.R
@@ -44,6 +45,12 @@ class PayPanelView @JvmOverloads constructor(
     init {
         binding = ViewPayPanelBinding.inflate(LayoutInflater.from(context), this, true)
         initView()
+    }
+
+    fun setDefaultData(amount: String, paidCode: Int, note: String) {
+        binding.tvPayAmount.text = amount
+        binding.tvPayNote.setText(note)
+        paidType = PaidType.fromCode(paidCode)
     }
 
     private fun initView() {
@@ -125,7 +132,8 @@ class PayPanelView @JvmOverloads constructor(
                 itemListener?.onClickDate()
             }
             "done" -> {
-                itemListener?.onClickDone(calculate(payAmount), paidType)
+                val note = binding.tvPayNote.textTrim()
+                itemListener?.onClickDone(calculate(payAmount), paidType, note)
             }
         }
         binding.tvPayAmount.text = payAmount
@@ -156,7 +164,7 @@ class PayPanelView @JvmOverloads constructor(
 
     interface PayPanelClickListener {
         fun onClickDate()
-        fun onClickDone(amount: String, paidType: PaidType)
+        fun onClickDone(amount: String, paidType: PaidType, note: String)
         fun onClickWallet()
     }
 }

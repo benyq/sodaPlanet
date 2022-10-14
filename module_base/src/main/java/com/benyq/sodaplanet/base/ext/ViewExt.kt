@@ -3,6 +3,7 @@ package com.benyq.sodaplanet.base.ext
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -79,3 +80,6 @@ fun ViewPager2.overScrollNever() {
     val child: View = getChildAt(0)
     (child as? RecyclerView)?.overScrollMode = View.OVER_SCROLL_NEVER
 }
+
+
+fun TextView.textTrim() = text.trim().toString()

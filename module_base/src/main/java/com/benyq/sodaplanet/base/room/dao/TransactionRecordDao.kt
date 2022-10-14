@@ -1,8 +1,6 @@
 package com.benyq.sodaplanet.base.room.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.benyq.sodaplanet.base.room.entity.TransactionRecord
 
 /**
@@ -21,10 +19,16 @@ interface TransactionRecordDao {
     fun addTransactionRecord(record: TransactionRecord): Long
 
 
-    @Query("select * from transaction_record where (:consumeType is null or customType == :consumeType) " +
+    @Query("select * from transaction_record where (:consumeType is null or consumeType == :consumeType) " +
             "and (:paidType is null or paidType == :paidType)" +
             "and createTime between :startTime and :endTime order by createTime desc")
     fun getByCondition(startTime: Long, endTime: Long, consumeType: Int? = null,
                        paidType: Int? = null): List<TransactionRecord>
+
+    @Delete
+    fun delete(record: TransactionRecord): Int
+
+    @Update
+    fun update(record: TransactionRecord): Int
 
 }

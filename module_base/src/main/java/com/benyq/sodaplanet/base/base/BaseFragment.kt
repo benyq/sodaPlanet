@@ -15,7 +15,7 @@ import androidx.viewbinding.ViewBinding
  * @email 1520063035@qq.com
  *
  */
-abstract class BaseFragment<VB : ViewBinding>() : Fragment(){
+abstract class BaseFragment<VB : ViewBinding> : Fragment(){
 
     private var _binding: VB? = null
     protected val binding get() = _binding!!

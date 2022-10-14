@@ -21,17 +21,26 @@ class TransactionAddRecordViewModel(application: Application) : BaseViewModel(ap
     private val _addRecordResult: MutableSharedFlow<Boolean> = MutableSharedFlow()
     val addRecordResult: SharedFlow<Boolean> = _addRecordResult
 
-    fun addTransactionRecord(amount: String, consumeType: ConsumeType, paidType: PaidType) {
+    fun addTransactionRecord(amount: String, consumeType: ConsumeType, paidType: PaidType, note: String) {
         val amountCent = yuan2fen(amount)
 
         execute {
-            sodaPlanetDB.transactionRecordDao().addTransactionRecord(TransactionRecord(amountCent, consumeType.code, paidType.code))
+            sodaPlanetDB.transactionRecordDao().addTransactionRecord(TransactionRecord(amountCent, consumeType.code, paidType.code, note))
         }.onSuccess {
             _addRecordResult.emit(it > 0)
         }
 
     }
 
+    fun updateTransactionRecord(record: TransactionRecord, amount: String) {
+        record.amount = yuan2fen(amount)
+        execute {
+            sodaPlanetDB.transactionRecordDao().update(record)
+        }.onSuccess {
+            record.amount = amount
+            _addRecordResult.emit(it > 0)
+        }
+    }
 
     private fun yuan2fen(amount: String): String {
         return if (amount.contains(".")) {

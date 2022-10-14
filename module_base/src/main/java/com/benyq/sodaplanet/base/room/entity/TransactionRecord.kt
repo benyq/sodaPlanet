@@ -1,9 +1,11 @@
 package com.benyq.sodaplanet.base.room.entity
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters
+import kotlinx.parcelize.Parcelize
 
 /**
  *
@@ -13,12 +15,14 @@ import androidx.room.TypeConverters
  * 记账实体类
  */
 @Entity(tableName = "transaction_record")
+@Parcelize
 data class TransactionRecord(
     //金额, 分为单位，1元 == 100分
     var amount: String,
-    val customType: Int,
-    val paidType: Int,
+    var consumeType: Int,
+    var paidType: Int,
+    var note: String,
     val createTime: Long = System.currentTimeMillis(),
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
-)
+): Parcelable

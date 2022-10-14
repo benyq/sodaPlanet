@@ -5,8 +5,11 @@
     <application>
         <activity
             android:name=".TransactionActivity"
-
             android:screenOrientation="portrait"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.detail.TransactionRecordDetailActivity"
             android:exported="false" />
     </application>
 

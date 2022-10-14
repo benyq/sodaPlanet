@@ -5,6 +5,7 @@ if (transaction.toBoolean()) {
 }
 apply plugin: 'org.jetbrains.kotlin.android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
 
 android {
     compileSdk rootProject.compile_sdk

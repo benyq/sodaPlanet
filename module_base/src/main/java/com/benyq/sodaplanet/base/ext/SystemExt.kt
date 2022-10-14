@@ -3,8 +3,12 @@ package com.benyq.sodaplanet.base.ext
 import android.app.Activity
 import android.content.res.Resources
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.util.TypedValue
 import android.view.WindowManager
+import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
@@ -97,4 +101,31 @@ inline fun Fragment.launchAndRepeatWithViewLifecycle(
             block()
         }
     }
+}
+
+
+private val handler = Handler(Looper.getMainLooper())
+fun runOnUIThread(duration: Long = 0, action: ()->Unit) {
+    if (Looper.myLooper() == Looper.getMainLooper() && duration == 0L) {
+        action()
+    }else {
+        handler.postDelayed({action()}, duration)
+    }
+}
+
+fun Activity.toast(msg: String) {
+    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+}
+
+fun Activity.toast(@StringRes resId: Int) {
+    Toast.makeText(this, resId, Toast.LENGTH_SHORT).show()
+}
+
+
+fun Fragment.toast(msg: String) {
+    requireActivity().toast(msg)
+}
+
+fun Fragment.toast(@StringRes resId: Int) {
+    requireActivity().toast(resId)
 }

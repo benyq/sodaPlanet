@@ -42,7 +42,7 @@ class TransactionGroupRecordData(var tag: String = "") : ItemExpand {
         finalList.forEach {
             sum += it.record.amount.toNumberDefault(0f)
         }
-        return  "%.2f".format(sum)
+        return  "-%.2f".format(sum)
     }
 
     fun date(): String {

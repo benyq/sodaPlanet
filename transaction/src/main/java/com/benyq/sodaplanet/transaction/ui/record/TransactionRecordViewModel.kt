@@ -53,7 +53,7 @@ class TransactionRecordViewModel(application: Application) : BaseViewModel(appli
             }
             Pair(groupRecords, "%.2f".format(sum))
         }.onSuccess {
-            Logger.d(it)
+            Logger.d("getRecordTime: $it")
             _transactionRecords.emit(it.first)
             _transactionRecordAmountSum.emit(it.second)
         }

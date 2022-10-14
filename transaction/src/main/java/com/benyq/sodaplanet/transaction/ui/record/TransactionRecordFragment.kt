@@ -1,6 +1,7 @@
 package com.benyq.sodaplanet.transaction.ui.record
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.viewModels
@@ -8,8 +9,10 @@ import com.benyq.sodaplanet.base.base.BaseFragment
 import com.benyq.sodaplanet.base.ext.launchAndRepeatWithViewLifecycle
 import com.benyq.sodaplanet.transaction.R
 import com.benyq.sodaplanet.transaction.data.TransactionGroupRecordData
+import com.benyq.sodaplanet.transaction.data.TransactionIntentExtra
 import com.benyq.sodaplanet.transaction.data.TransactionRecordData
 import com.benyq.sodaplanet.transaction.databinding.FragmentTransactionRecordBinding
+import com.benyq.sodaplanet.transaction.ui.detail.TransactionRecordDetailActivity
 import com.bigkoo.pickerview.builder.TimePickerBuilder
 import com.bigkoo.pickerview.view.TimePickerView
 import com.drake.brv.utils.linear
@@ -31,7 +34,6 @@ class TransactionRecordFragment : BaseFragment<FragmentTransactionRecordBinding>
     private val vm by viewModels<TransactionRecordViewModel>()
     private val currentCalendar = Calendar.getInstance().apply {
         firstDayOfWeek = Calendar.MONDAY
-
     }
 
     private val timePickerView: TimePickerView by lazy {
@@ -56,6 +58,7 @@ class TransactionRecordFragment : BaseFragment<FragmentTransactionRecordBinding>
         }.setLayoutRes(R.layout.pickerview_custom_time){
             it.findViewById<TextView>(R.id.ivConfirm).setOnClickListener {
                 timePickerView.returnData()
+                timePickerView.dismiss()
             }
         }.setRangDate(startDate, endDate)
             .setLabel("年","月","日","时","分","秒")
@@ -72,10 +75,12 @@ class TransactionRecordFragment : BaseFragment<FragmentTransactionRecordBinding>
             addType<TransactionRecordData>(R.layout.item_transaction_record)
 
             R.id.item.onClick {
-
+                val data = getModel<TransactionRecordData>()
+                startActivity(Intent(requireActivity(), TransactionRecordDetailActivity::class.java).apply {
+                    putExtra(TransactionIntentExtra.transactionRecord, data.record)
+                })
             }
         }
-
 
         binding.tvDate.text = "${currentCalendar.get(Calendar.MONTH) + 1}月支出"
         binding.tvDate.setOnClickListener {
@@ -84,6 +89,10 @@ class TransactionRecordFragment : BaseFragment<FragmentTransactionRecordBinding>
 
         injectObserver()
 
+    }
+
+    override fun onResume() {
+        super.onResume()
         queryRecords()
     }
 
@@ -122,7 +131,9 @@ class TransactionRecordFragment : BaseFragment<FragmentTransactionRecordBinding>
         currentCalendar.set(Calendar.HOUR_OF_DAY, 24)
         val end = currentCalendar.time.time
 
-        Logger.d("start: $start, end: $end")
         vm.getRecordTime(start, end)
+        Logger.d("start: $start, end: $end")
+
+        currentCalendar.timeInMillis = System.currentTimeMillis()
     }
 }

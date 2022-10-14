@@ -16,27 +16,15 @@
         android:layout_height="wrap_content"
         android:padding="10dp">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivBG"
+        <com.benyq.sodaplanet.transaction.widget.ConsumeView
+            android:id="@+id/consumeView"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            app:shapeAppearanceOverlay="@style/circleStyle"
+            drawableRes="@{m.resId}"
+            bgColor="@{m.colorId}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@{m.colorId}"
-            tools:background="@color/blue_500" />
-
-        <ImageView
-            android:id="@+id/ivConsume"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            app:layout_constraintTop_toTopOf="@id/ivBG"
-            app:layout_constraintBottom_toBottomOf="@id/ivBG"
-            app:layout_constraintStart_toStartOf="@id/ivBG"
-            app:layout_constraintEnd_toEndOf="@id/ivBG"
-            imageUrl="@{m.resId}"
-            tools:src="@drawable/ic_food1" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivCover"
@@ -58,7 +46,7 @@
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/ivBG"
+            app:layout_constraintTop_toBottomOf="@id/consumeView"
             android:text="@{m.message}"
             tools:text="餐饮" />
 
