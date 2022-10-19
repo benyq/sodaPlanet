@@ -1,13 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="10dp">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="analysis"/>
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="支出分析"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/shape_bg_border_date"
+            android:orientation="horizontal"
+            android:layout_marginVertical="10dp"
+            android:paddingHorizontal="1dp"
+            android:paddingVertical="1dp">
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_date_radio"
+                android:button="@null"
+                android:gravity="center"
+                android:text="周"
+                android:textColor="@color/selector_transaction_date_text_color" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/black" />
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_date_radio"
+                android:button="@null"
+                android:gravity="center"
+                android:text="月"
+                android:textColor="@color/selector_transaction_date_text_color" />
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/black" />
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_date_radio"
+                android:button="@null"
+                android:gravity="center"
+                android:checked="true"
+                android:text="年"
+                android:textColor="@color/selector_transaction_date_text_color" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="支出走势"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_4E4E4E"
+                android:layout_marginEnd="5dp"
+                android:textSize="13sp"
+                android:text="总支出:"/>
+
+            <TextView
+                android:id="@+id/tvTotalAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginEnd="20dp"
+                android:textSize="13sp"
+                android:text="1029.00"/>
+
+            <TextView
+                android:id="@+id/tvAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_4E4E4E"
+                android:layout_marginEnd="5dp"
+                android:textSize="13sp"
+                android:text="日均:"/>
+
+            <TextView
+                android:id="@+id/tvTotalAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:text="1029.00"/>
+
+        </LinearLayout>
+
+        <com.benyq.sodaplanet.transaction.widget.LineChartView
+            android:id="@+id/lineChart"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
 </layout>
