@@ -8,6 +8,7 @@ import android.view.MotionEvent
 import android.view.View
 import com.benyq.sodaplanet.base.ext.clamp
 import com.benyq.sodaplanet.base.ext.dp
+import com.benyq.sodaplanet.base.ext.textHeight
 import com.orhanobut.logger.Logger
 import kotlin.math.max
 
@@ -79,7 +80,7 @@ class LineChartView @JvmOverloads constructor(
         textPaint.textSize = 12.dp
         textPaint.isAntiAlias = true
 
-        textHeight = textPaint.fontMetrics.descent - textPaint.fontMetrics.ascent + textPaint.fontMetrics.leading
+        textHeight = textPaint.textHeight
     }
 
 
@@ -157,6 +158,8 @@ class LineChartView @JvmOverloads constructor(
         circleData.clear()
         lineData.clear()
         bottomText.clear()
+        amountText = null
+        if (_data.isEmpty()) return
 
         originX = paddingStart + innerPadding
         originY = paddingTop + innerPadding

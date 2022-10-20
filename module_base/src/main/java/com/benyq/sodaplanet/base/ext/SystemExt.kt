@@ -5,6 +5,7 @@ import android.content.res.Resources
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
+import android.text.TextPaint
 import android.util.TypedValue
 import android.view.WindowManager
 import android.widget.Toast
@@ -129,3 +130,6 @@ fun Fragment.toast(msg: String) {
 fun Fragment.toast(@StringRes resId: Int) {
     requireActivity().toast(resId)
 }
+
+val TextPaint.textHeight: Float
+    get() = fontMetrics.descent - fontMetrics.ascent + fontMetrics.leading

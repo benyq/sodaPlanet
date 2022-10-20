@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="m"
+            type="com.benyq.sodaplanet.transaction.data.TransactionConsumeData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.benyq.sodaplanet.transaction.widget.ConsumeView
+            android:id="@+id/consumeView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            drawableRes="@{m.consumeType.resId}"
+            bgColor="@{m.consumeType.colorId}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvConsumeType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/consumeView"
+            app:layout_constraintTop_toTopOf="@id/consumeView"
+            android:text="@{m.consumeType.message}"
+            tools:text="外卖" />
+
+        <TextView
+            android:id="@+id/tvConsumeRatio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/consumeView"
+            app:layout_constraintStart_toEndOf="@id/consumeView"
+            android:text="@{m.radioContent}"
+            tools:text="外卖" />
+
+        <TextView
+            android:id="@+id/tvPayAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/color_2E2E2E"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@id/tvPayUnit"
+            app:layout_constraintTop_toTopOf="@id/consumeView"
+            app:layout_constraintBottom_toBottomOf="@id/consumeView"
+            android:text="@{m.record.amount}"
+            tools:text="11.56" />
+
+        <TextView
+            android:id="@+id/tvPayUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/color_2E2E2E"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/consumeView"
+            app:layout_constraintBottom_toBottomOf="@id/consumeView"
+            android:text="元" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dark_grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/consumeView"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
