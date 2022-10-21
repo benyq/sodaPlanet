@@ -85,6 +85,7 @@ class TransactionRecordFragment : BaseFragment<FragmentTransactionRecordBinding>
 
         binding.tvDate.text = "${currentCalendar.get(Calendar.MONTH) + 1}月支出"
         binding.tvDate.setOnClickListener {
+            timePickerView.setDate(currentCalendar)
             timePickerView.show(true)
         }
 
@@ -129,12 +130,12 @@ class TransactionRecordFragment : BaseFragment<FragmentTransactionRecordBinding>
 
         val second: Int = currentCalendar.getActualMaximum(Calendar.DAY_OF_MONTH)
         currentCalendar.set(Calendar.DAY_OF_MONTH, second)
-        currentCalendar.set(Calendar.HOUR_OF_DAY, 24)
+        currentCalendar.set(Calendar.HOUR_OF_DAY, 23)
+        currentCalendar.set(Calendar.MINUTE, 59)
+        currentCalendar.set(Calendar.SECOND, 59)
         val end = currentCalendar.time.time
 
         vm.getRecordTime(start, end)
         Logger.d("start: $start, end: $end")
-
-        currentCalendar.timeInMillis = System.currentTimeMillis()
     }
 }
