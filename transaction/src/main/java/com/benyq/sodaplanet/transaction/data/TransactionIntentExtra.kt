@@ -10,4 +10,6 @@ package com.benyq.sodaplanet.transaction.data
 object TransactionIntentExtra {
 
     const val transactionRecord: String = "transactionRecord"
+
+    const val shortcut: String = "transactionShortcut"
 }

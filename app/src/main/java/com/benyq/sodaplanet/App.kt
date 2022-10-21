@@ -10,7 +10,7 @@ import com.benyq.sodaplanet.base.CommonModuleInit
  * @email 1520063035@qq.com
  *
  */
-class App : Application(){
+class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
