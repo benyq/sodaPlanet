@@ -22,7 +22,7 @@ data class TransactionRecord(
     var consumeType: Int,
     var paidType: Int,
     var note: String,
-    val createTime: Long = System.currentTimeMillis(),
+    var createTime: Long = System.currentTimeMillis(),
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
 ): Parcelable

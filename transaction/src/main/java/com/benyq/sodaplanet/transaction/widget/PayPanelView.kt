@@ -17,7 +17,9 @@ import com.benyq.sodaplanet.transaction.R
 import com.benyq.sodaplanet.transaction.data.PaidType
 import com.benyq.sodaplanet.transaction.databinding.ViewPayPanelBinding
 import com.drake.brv.utils.grid
+import com.drake.brv.utils.models
 import com.drake.brv.utils.setup
+import com.orhanobut.logger.Logger
 
 /**
  *
@@ -51,6 +53,20 @@ class PayPanelView @JvmOverloads constructor(
         binding.tvPayAmount.text = amount
         binding.tvPayNote.setText(note)
         paidType = PaidType.fromCode(paidCode)
+    }
+
+    fun setDate(date: String) {
+        Logger.d("date: $date")
+        var dateIndex = -1
+        binding.rvDial.models?.forEachIndexed { index, any ->
+            if ((any as PanelButtonData).code == "date") {
+                dateIndex = index
+                any.text = date
+            }
+        }
+        if (dateIndex != -1) {
+            binding.rvDial.adapter?.notifyItemChanged(dateIndex)
+        }
     }
 
     private fun initView() {
@@ -160,7 +176,7 @@ class PayPanelView @JvmOverloads constructor(
         )
     }
 
-    data class PanelButtonData(val code: String, val text: String)
+    data class PanelButtonData(val code: String, var text: String)
 
     interface PayPanelClickListener {
         fun onClickDate()

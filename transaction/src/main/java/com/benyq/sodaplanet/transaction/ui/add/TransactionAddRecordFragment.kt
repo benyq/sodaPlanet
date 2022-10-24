@@ -1,7 +1,7 @@
 package com.benyq.sodaplanet.transaction.ui.add
 
 import android.view.View
-import android.widget.Toast
+import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -16,9 +16,13 @@ import com.benyq.sodaplanet.transaction.data.PaidType
 import com.benyq.sodaplanet.transaction.data.TransactionIntentExtra
 import com.benyq.sodaplanet.transaction.databinding.FragmentTransactionAddRecordBinding
 import com.benyq.sodaplanet.transaction.widget.PayPanelView
+import com.bigkoo.pickerview.builder.TimePickerBuilder
+import com.bigkoo.pickerview.view.TimePickerView
 import com.drake.brv.utils.grid
 import com.drake.brv.utils.setup
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  *
@@ -31,11 +35,48 @@ class TransactionAddRecordFragment : BaseFragment<FragmentTransactionAddRecordBi
 
     private val vm by viewModels<TransactionAddRecordViewModel>()
 
+    private val currentCalendar = Calendar.getInstance().apply {
+        firstDayOfWeek = Calendar.MONDAY
+    }
+
     private var currentConsumeType = ConsumeType.singleFood
 
     private lateinit var paidTypeDialog: BottomPaidTypeDialog
 
     private var record: TransactionRecord? = null
+
+    private val timePickerView: TimePickerView by lazy {
+        val selectedDate = Calendar.getInstance()
+        val startDate: Calendar = Calendar.getInstance()
+        startDate.set(startDate.get(Calendar.YEAR), 0, 1)
+        val endDate: Calendar = Calendar.getInstance()
+
+        TimePickerBuilder(requireActivity()) { date, v ->
+
+            currentCalendar.time = date
+            var dateText =
+                SimpleDateFormat("MM-dd", Locale.CHINA).format(currentCalendar.time)
+
+            val calendarToday = Calendar.getInstance()
+            calendarToday.time = Date()
+
+            if (currentCalendar.get(Calendar.DAY_OF_YEAR) == calendarToday.get(Calendar.DAY_OF_YEAR)) {
+                dateText = "今天"
+            } else if (currentCalendar.get(Calendar.DAY_OF_YEAR) == calendarToday.get(Calendar.DAY_OF_YEAR) - 1) {
+                dateText = "昨天"
+            }
+            binding.payPanelView.setDate(dateText)
+
+        }.setLayoutRes(R.layout.pickerview_custom_time) {
+            it.findViewById<TextView>(R.id.ivConfirm).setOnClickListener {
+                timePickerView.returnData()
+                timePickerView.dismiss()
+            }
+        }.setRangDate(startDate, endDate)
+            .setLabel("年", "月", "日", "时", "分", "秒")
+            .setDate(selectedDate)
+            .setType(booleanArrayOf(false, true, true, false, false, false)).build()
+    }
 
     override fun provideViewBinding() = FragmentTransactionAddRecordBinding.inflate(layoutInflater)
 
@@ -44,7 +85,7 @@ class TransactionAddRecordFragment : BaseFragment<FragmentTransactionAddRecordBi
         record = arguments?.getParcelable(TransactionIntentExtra.transactionRecord)
         record?.let {
             binding.payPanelView.setDefaultData(it.amount, it.paidType, it.note)
-            consumeTypes.forEach { consume->
+            consumeTypes.forEach { consume ->
                 consume.selected = consume.code == it.consumeType
             }
         }
@@ -69,16 +110,18 @@ class TransactionAddRecordFragment : BaseFragment<FragmentTransactionAddRecordBi
         }
         binding.payPanelView.itemListener = object : PayPanelView.PayPanelClickListener {
             override fun onClickDate() {
+                timePickerView.show()
             }
 
             override fun onClickDone(amount: String, paidType: PaidType, note: String) {
                 if (record == null) {
                     vm.addTransactionRecord(amount, currentConsumeType, paidType, note)
-                }else {
+                } else {
                     record?.let {
                         it.paidType = paidType.code
                         it.consumeType = currentConsumeType.code
                         it.note = note
+                        it.createTime = currentCalendar.timeInMillis
                     }
                     vm.updateTransactionRecord(record!!, amount)
                 }
