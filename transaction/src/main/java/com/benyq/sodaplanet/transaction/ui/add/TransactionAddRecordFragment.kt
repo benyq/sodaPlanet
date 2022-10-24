@@ -52,21 +52,8 @@ class TransactionAddRecordFragment : BaseFragment<FragmentTransactionAddRecordBi
         val endDate: Calendar = Calendar.getInstance()
 
         TimePickerBuilder(requireActivity()) { date, v ->
-
             currentCalendar.time = date
-            var dateText =
-                SimpleDateFormat("MM-dd", Locale.CHINA).format(currentCalendar.time)
-
-            val calendarToday = Calendar.getInstance()
-            calendarToday.time = Date()
-
-            if (currentCalendar.get(Calendar.DAY_OF_YEAR) == calendarToday.get(Calendar.DAY_OF_YEAR)) {
-                dateText = "今天"
-            } else if (currentCalendar.get(Calendar.DAY_OF_YEAR) == calendarToday.get(Calendar.DAY_OF_YEAR) - 1) {
-                dateText = "昨天"
-            }
-            binding.payPanelView.setDate(dateText)
-
+            binding.payPanelView.setDate(currentCalendar.timeInMillis)
         }.setLayoutRes(R.layout.pickerview_custom_time) {
             it.findViewById<TextView>(R.id.ivConfirm).setOnClickListener {
                 timePickerView.returnData()
@@ -85,6 +72,7 @@ class TransactionAddRecordFragment : BaseFragment<FragmentTransactionAddRecordBi
         record = arguments?.getParcelable(TransactionIntentExtra.transactionRecord)
         record?.let {
             binding.payPanelView.setDefaultData(it.amount, it.paidType, it.note)
+            binding.payPanelView.setDate(it.createTime)
             consumeTypes.forEach { consume ->
                 consume.selected = consume.code == it.consumeType
             }

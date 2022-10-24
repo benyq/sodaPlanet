@@ -14,6 +14,7 @@ import com.drake.brv.utils.linear
 import com.drake.brv.utils.models
 import com.drake.brv.utils.setup
 import com.orhanobut.logger.Logger
+import kotlin.properties.Delegates
 
 /**
  *
@@ -28,7 +29,13 @@ class TransactionAnalysisFragment : BaseFragment<FragmentTransactionAyalysisBind
 
     override fun provideViewBinding() = FragmentTransactionAyalysisBinding.inflate(layoutInflater)
 
-    private var currentDateType = LineChartView.DateType.WEEK
+    private var currentDateType by Delegates.observable(LineChartView.DateType.WEEK) { property, old, new  ->
+        binding.tvAverage.text = when (new) {
+            LineChartView.DateType.WEEK -> "日均:"
+            LineChartView.DateType.MONTH -> "日均:"
+            LineChartView.DateType.YEAR -> "月均:"
+        }
+    }
 
     override fun onFragmentViewCreated(view: View) {
 

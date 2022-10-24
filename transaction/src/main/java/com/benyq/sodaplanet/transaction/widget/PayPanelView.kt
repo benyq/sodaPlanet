@@ -20,6 +20,8 @@ import com.drake.brv.utils.grid
 import com.drake.brv.utils.models
 import com.drake.brv.utils.setup
 import com.orhanobut.logger.Logger
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  *
@@ -55,13 +57,28 @@ class PayPanelView @JvmOverloads constructor(
         paidType = PaidType.fromCode(paidCode)
     }
 
-    fun setDate(date: String) {
-        Logger.d("date: $date")
+    fun setDate(time: Long) {
+
+        var dateText = SimpleDateFormat("MM-dd", Locale.CHINA).format(time)
+
+        val calendarToday = Calendar.getInstance()
+        calendarToday.time = Date()
+
+        val currentCalendar = Calendar.getInstance()
+        currentCalendar.timeInMillis = time
+
+        if (currentCalendar.get(Calendar.DAY_OF_YEAR) == calendarToday.get(Calendar.DAY_OF_YEAR)) {
+            dateText = "今天"
+        } else if (currentCalendar.get(Calendar.DAY_OF_YEAR) == calendarToday.get(Calendar.DAY_OF_YEAR) - 1) {
+            dateText = "昨天"
+        }
+
+        Logger.d("date: $dateText")
         var dateIndex = -1
         binding.rvDial.models?.forEachIndexed { index, any ->
             if ((any as PanelButtonData).code == "date") {
                 dateIndex = index
-                any.text = date
+                any.text = dateText
             }
         }
         if (dateIndex != -1) {
