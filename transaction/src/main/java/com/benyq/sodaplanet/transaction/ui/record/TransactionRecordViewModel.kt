@@ -1,7 +1,7 @@
 package com.benyq.sodaplanet.transaction.ui.record
 
 import android.app.Application
-import com.benyq.sodaplanet.base.base.BaseViewModel
+import com.benyq.sodaplanet.base.ui.BaseViewModel
 import com.benyq.sodaplanet.base.ext.toNumberDefault
 import com.benyq.sodaplanet.base.room.sodaPlanetDB
 import com.benyq.sodaplanet.transaction.data.TransactionGroupRecordData

@@ -1,6 +1,10 @@
 package com.benyq.sodaplanet.base.ext
 
 import android.app.Activity
+import android.app.Application
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.res.Resources
 import android.os.Build
 import android.os.Handler
@@ -27,6 +31,8 @@ import kotlinx.coroutines.launch
  * @email 1520063035@qq.com
  *
  */
+
+lateinit var appCtx: Application
 
 //dp -> px
 val Float.dp: Float
@@ -116,14 +122,17 @@ fun runOnUIThread(duration: Long = 0, action: ()->Unit) {
     }
 }
 
-fun Activity.toast(msg: String) {
-    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+fun Context.toast(msg: String) {
+    runOnUIThread {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    }
 }
 
-fun Activity.toast(@StringRes resId: Int) {
-    Toast.makeText(this, resId, Toast.LENGTH_SHORT).show()
+fun Context.toast(@StringRes resId: Int) {
+    runOnUIThread {
+        Toast.makeText(this, resId, Toast.LENGTH_SHORT).show()
+    }
 }
-
 
 fun Fragment.toast(msg: String) {
     requireActivity().toast(msg)
@@ -135,3 +144,27 @@ fun Fragment.toast(@StringRes resId: Int) {
 
 val TextPaint.textHeight: Float
     get() = fontMetrics.descent - fontMetrics.ascent + fontMetrics.leading
+
+
+fun Context.clipboardRead(): String {
+    var content = ""
+    val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    clipboardManager.primaryClip?.run {
+        if (itemCount > 0) {
+            content = getItemAt(0).text?.toString() ?: ""
+        }
+    }
+    return content
+}
+
+fun Context.clipboardClear() {
+    val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    clipboardManager.setPrimaryClip(ClipData.newPlainText("", ""))
+    clipboardManager.text = ""
+}
+
+fun Context.clipboardCopy(content: String) {
+    val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    clipboardManager.setPrimaryClip(ClipData.newPlainText("", content))
+    clipboardManager.text = content
+}

@@ -7,7 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.benyq.sodaplanet.base.base.BaseFragment
+import com.benyq.sodaplanet.base.ui.BaseFragment
 import com.benyq.sodaplanet.base.ext.setStatusBarMode
 import com.benyq.sodaplanet.transaction.R
 import com.benyq.sodaplanet.transaction.databinding.FragmentTransactionBinding

@@ -1,12 +1,11 @@
 package com.benyq.sodaplanet.transaction.ui.analysis
 
 import android.app.Application
-import com.benyq.sodaplanet.base.base.BaseViewModel
+import com.benyq.sodaplanet.base.ui.BaseViewModel
 import com.benyq.sodaplanet.base.ext.toNumberDefault
 import com.benyq.sodaplanet.base.room.sodaPlanetDB
 import com.benyq.sodaplanet.transaction.data.TransactionConsumeData
 import com.benyq.sodaplanet.transaction.data.TransactionDateData
-import com.benyq.sodaplanet.transaction.data.TransactionRecordData
 import com.orhanobut.logger.Logger
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow

@@ -1,7 +1,7 @@
 package com.benyq.sodaplanet.transaction.ui.detail
 
 import android.app.Application
-import com.benyq.sodaplanet.base.base.BaseViewModel
+import com.benyq.sodaplanet.base.ui.BaseViewModel
 import com.benyq.sodaplanet.base.room.entity.TransactionRecord
 import com.benyq.sodaplanet.base.room.sodaPlanetDB
 import kotlinx.coroutines.flow.MutableSharedFlow

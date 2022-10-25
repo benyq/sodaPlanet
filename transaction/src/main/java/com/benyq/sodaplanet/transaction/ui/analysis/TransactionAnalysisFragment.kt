@@ -3,7 +3,7 @@ package com.benyq.sodaplanet.transaction.ui.analysis
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import com.benyq.sodaplanet.base.base.BaseFragment
+import com.benyq.sodaplanet.base.ui.BaseFragment
 import com.benyq.sodaplanet.base.ext.launchAndRepeatWithViewLifecycle
 import com.benyq.sodaplanet.transaction.R
 import com.benyq.sodaplanet.transaction.data.TransactionConsumeData

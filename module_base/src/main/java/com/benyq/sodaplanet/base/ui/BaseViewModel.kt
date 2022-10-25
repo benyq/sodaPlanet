@@ -1,4 +1,4 @@
-package com.benyq.sodaplanet.base.base
+package com.benyq.sodaplanet.base.ui
 
 import android.app.Application
 import android.content.Context

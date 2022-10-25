@@ -5,7 +5,7 @@ import android.content.Intent
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.viewModels
-import com.benyq.sodaplanet.base.base.BaseFragment
+import com.benyq.sodaplanet.base.ui.BaseFragment
 import com.benyq.sodaplanet.base.ext.launchAndRepeatWithViewLifecycle
 import com.benyq.sodaplanet.transaction.R
 import com.benyq.sodaplanet.transaction.data.TransactionGroupRecordData
@@ -19,7 +19,6 @@ import com.drake.brv.utils.linear
 import com.drake.brv.utils.models
 import com.drake.brv.utils.setup
 import com.orhanobut.logger.Logger
-import java.text.SimpleDateFormat
 import java.util.*
 
 /**

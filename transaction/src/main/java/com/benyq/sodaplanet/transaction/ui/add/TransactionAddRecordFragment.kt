@@ -7,7 +7,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.benyq.sodaplanet.base.base.BaseFragment
+import com.benyq.sodaplanet.base.ui.BaseFragment
 import com.benyq.sodaplanet.base.ext.toast
 import com.benyq.sodaplanet.base.room.entity.TransactionRecord
 import com.benyq.sodaplanet.transaction.R
@@ -21,7 +21,6 @@ import com.bigkoo.pickerview.view.TimePickerView
 import com.drake.brv.utils.grid
 import com.drake.brv.utils.setup
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
 import java.util.*
 
 /**

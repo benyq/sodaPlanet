@@ -1,10 +1,9 @@
-package com.benyq.sodaplanet.base.base
+package com.benyq.sodaplanet.base.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 

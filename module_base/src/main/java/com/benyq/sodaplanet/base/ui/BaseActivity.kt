@@ -1,8 +1,6 @@
-package com.benyq.sodaplanet.base.base
+package com.benyq.sodaplanet.base.ui
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 

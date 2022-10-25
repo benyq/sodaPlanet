@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import com.benyq.sodaplanet.base.base.BaseFragment
+import com.benyq.sodaplanet.base.ui.BaseFragment
 import com.benyq.sodaplanet.base.ext.launchAndRepeatWithViewLifecycle
 import com.benyq.sodaplanet.base.ext.toast
 import com.benyq.sodaplanet.base.room.entity.TransactionRecord
