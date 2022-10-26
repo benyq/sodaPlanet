@@ -58,12 +58,15 @@ class AboutAppActivity : BaseActivity<ActivityAboutAppBinding>() {
 
     override fun onDestroy() {
         super.onDestroy()
-        unregisterReceiver(apkReceiver)
+        apkReceiver?.let { unregisterReceiver(it) }
+
     }
 
     private fun downloadApk(data: ApkVersionEntity) {
 
         if (downloadJob != null && downloadJob!!.isActive) return
+
+        binding.icUpdateCheck.setContent("")
 
         apkReceiver?.let { unregisterReceiver(it) }
 
