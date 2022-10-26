@@ -3,6 +3,9 @@ package com.benyq.sodaplanet.base.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
+import com.benyq.sodaplanet.base.R
+import com.benyq.sodaplanet.base.ext.getColorRef
+import com.benyq.sodaplanet.base.ext.setStatusBarMode
 
 /**
  *
@@ -18,6 +21,9 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        setStatusBarMode(getColorRef(R.color.dark_grey), true)
+
         _binding = provideViewBinding()
         setContentView(binding.root)
         onActivityCreated(savedInstanceState)

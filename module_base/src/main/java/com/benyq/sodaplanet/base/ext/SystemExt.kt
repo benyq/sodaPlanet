@@ -14,6 +14,7 @@ import android.util.TypedValue
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
@@ -100,6 +101,16 @@ fun Fragment.fullScreen(full: Boolean) {
     requireActivity().fullScreen(full)
 }
 
+inline fun AppCompatActivity.launchAndRepeatWithViewLifecycle(
+    mainActiveState: Lifecycle.State = Lifecycle.State.STARTED,
+    crossinline block: suspend CoroutineScope.()->Unit
+) {
+    lifecycleScope.launch {
+        lifecycle.repeatOnLifecycle(mainActiveState) {
+            block()
+        }
+    }
+}
 
 inline fun Fragment.launchAndRepeatWithViewLifecycle(
     mainActiveState: Lifecycle.State = Lifecycle.State.STARTED,

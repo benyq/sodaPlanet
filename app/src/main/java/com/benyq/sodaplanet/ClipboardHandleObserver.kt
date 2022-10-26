@@ -47,7 +47,7 @@ class ClipboardHandleObserver : DefaultLifecycleObserver{
         }
 
         Coroutine.async(scope, Dispatchers.IO) {
-            lifeApi.appJson()
+            sodaApi.appJson()
         }.onSuccess {
             if (it.version > appJson.version) {
                 appJson = it

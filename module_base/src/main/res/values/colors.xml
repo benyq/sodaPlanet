@@ -12,5 +12,11 @@
 
     <color name="color_2E2E2E">#FF2E2E2E</color>
     <color name="color_4E4E4E">#FF4E4E4E</color>
+    <color name="color_3C4044">#FF3C4044</color>
     <color name="dark_grey">#FFEDEDED</color>
+    <color name="color_3FA9A9A9">#3FA9A9A9</color>
+    <color name="color_2A2A2A">#FF2A2A2A</color>
+    <color name="color_989CA0">#FF989CA0</color>
+    <color name="grey">#808080</color>
+
 </resources>

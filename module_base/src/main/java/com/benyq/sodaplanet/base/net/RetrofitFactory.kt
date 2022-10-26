@@ -23,7 +23,7 @@ object RetrofitFactory {
     // 连接超时
     const val CONNECT_TIME_OUT = 5L
 
-    fun <T> create(clz: Class<T>, okhttpConfig: (OkHttpClient.Builder.()->Unit) ? = null, retrofitConfig: (Retrofit.Builder.()->Unit)? = null): T {
+    fun <T> create(clz: Class<T>, baseUrl: String, okhttpConfig: (OkHttpClient.Builder.()->Unit) ? = null, retrofitConfig: (Retrofit.Builder.()->Unit)? = null): T {
 
         val loggingInterceptor = HttpLoggingInterceptor { message ->
             Logger.d(message)
@@ -39,16 +39,9 @@ object RetrofitFactory {
         }
         okhttpConfig?.invoke(builder)
 
-        val baseUrl = prepareBaseUrl(clz)
-
         val retrofit = createRetrofit(baseUrl, builder, retrofitConfig)
 
         return retrofit.create(clz)
-    }
-
-    private fun <T> prepareBaseUrl(clz: Class<T>) : String{
-        val baseUrlAnnotation = clz.getAnnotation(BaseUrl::class.java)
-        return baseUrlAnnotation?.value ?: throw IllegalArgumentException("base url is null")
     }
 
     private fun createRetrofit(baseUrl: String, builder: OkHttpClient.Builder, retrofitAction: (Retrofit.Builder.()->Unit)?): Retrofit {

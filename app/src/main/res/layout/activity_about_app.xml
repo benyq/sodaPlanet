@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <com.benyq.sodaplanet.base.widget.HeaderView
+            android:id="@+id/headerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:toolbar_title="@string/about_app"/>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_launcher"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:background="@color/dark_grey"
+            android:textSize="14sp"
+            android:text="@string/brief_introduction"
+            android:textColor="@color/color_2A2A2A"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:textSize="12sp"
+            android:textColor="@color/color_2A2A2A"
+            android:text="@string/brief_introduction_content"/>
+
+        <com.benyq.sodaplanet.base.widget.IconFormLine
+            android:id="@+id/icAppUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:form_title="@string/project_url"/>
+
+        <com.benyq.sodaplanet.base.widget.IconFormLine
+            android:id="@+id/icUpdateCheck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:form_title="@string/check_update"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tvVersionName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:textColor="@color/color_2A2A2A"/>
+    </LinearLayout>
+</layout>

@@ -1,7 +1,11 @@
 package com.benyq.sodaplanet
 
 import android.app.Application
+import android.os.Build
 import com.benyq.sodaplanet.base.ui.BaseViewModel
+import com.orhanobut.logger.Logger
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 
 /**
  *
@@ -12,10 +16,6 @@ import com.benyq.sodaplanet.base.ui.BaseViewModel
  */
 class MainViewModel(application: Application) : BaseViewModel(application) {
 
-    fun checkApkVersion() {
-        execute {
 
-        }
-    }
 
 }
