@@ -21,11 +21,11 @@ class TransactionAddRecordViewModel(application: Application) : BaseViewModel(ap
     private val _addRecordResult: MutableSharedFlow<Boolean> = MutableSharedFlow()
     val addRecordResult: SharedFlow<Boolean> = _addRecordResult
 
-    fun addTransactionRecord(amount: String, consumeType: ConsumeType, paidType: PaidType, note: String) {
+    fun addTransactionRecord(amount: String, consumeType: ConsumeType, paidType: PaidType, note: String, createTime: Long) {
         val amountCent = yuan2fen(amount)
 
         execute {
-            sodaPlanetDB.transactionRecordDao().addTransactionRecord(TransactionRecord(amountCent, consumeType.code, paidType.code, note))
+            sodaPlanetDB.transactionRecordDao().addTransactionRecord(TransactionRecord(amountCent, consumeType.code, paidType.code, note, createTime))
         }.onSuccess {
             _addRecordResult.emit(it > 0)
         }

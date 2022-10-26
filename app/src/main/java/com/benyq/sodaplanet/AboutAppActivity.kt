@@ -116,6 +116,7 @@ class AboutAppActivity : BaseActivity<ActivityAboutAppBinding>() {
 
                 //已经完成
                 if (intent.action.equals(DownloadManager.ACTION_DOWNLOAD_COMPLETE)) {
+                    binding.icUpdateCheck.setContent("下载 100%")
 
                     //解绑进度监听
                     downloadJob?.cancel()

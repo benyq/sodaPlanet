@@ -102,7 +102,7 @@ class TransactionAddRecordFragment : BaseFragment<FragmentTransactionAddRecordBi
 
             override fun onClickDone(amount: String, paidType: PaidType, note: String) {
                 if (record == null) {
-                    vm.addTransactionRecord(amount, currentConsumeType, paidType, note)
+                    vm.addTransactionRecord(amount, currentConsumeType, paidType, note, currentCalendar.timeInMillis)
                 } else {
                     record?.let {
                         it.paidType = paidType.code

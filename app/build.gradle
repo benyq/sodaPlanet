@@ -17,10 +17,23 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+
+        release {
+            storeFile file(pStoreFile)
+            storePassword pStorePassword
+            keyAlias pKeyAlias
+            keyPassword pKeyPassword
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
@@ -31,6 +44,15 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures.dataBinding = true
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            // apk_渠道名-版本号-版本名称-编译时间.apk
+            if ('release' == variant.buildType.name) {
+                outputFileName = "sodaplanet_${defaultConfig.versionName}.apk"
+            }
+        }
+    }
 }
 
 dependencies {
