@@ -72,6 +72,8 @@ class TransactionAddRecordFragment : BaseFragment<FragmentTransactionAddRecordBi
         record?.let {
             binding.payPanelView.setDefaultData(it.amount, it.paidType, it.note)
             binding.payPanelView.setDate(it.createTime)
+            currentCalendar.timeInMillis = it.createTime
+            currentConsumeType = ConsumeType.fromCode(it.consumeType)
             consumeTypes.forEach { consume ->
                 consume.selected = consume.code == it.consumeType
             }
