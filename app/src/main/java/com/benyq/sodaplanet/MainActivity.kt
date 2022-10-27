@@ -3,10 +3,8 @@ package com.benyq.sodaplanet
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import com.benyq.sodaplanet.base.ui.BaseActivity
 import com.benyq.sodaplanet.databinding.ActivityMainBinding
-import com.benyq.sodaplanet.transaction.TransactionActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
