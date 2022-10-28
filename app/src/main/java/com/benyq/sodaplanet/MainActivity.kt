@@ -3,6 +3,7 @@ package com.benyq.sodaplanet
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import com.benyq.sodaplanet.audio.WifiTransferActivity
 import com.benyq.sodaplanet.base.ui.BaseActivity
 import com.benyq.sodaplanet.databinding.ActivityMainBinding
 
@@ -16,7 +17,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         lifecycle.addObserver(ClipboardHandleObserver())
 
         binding.tvCheckVersion.setOnClickListener {
-            startActivity(Intent(this, AboutAppActivity::class.java))
+            startActivity(Intent(this, WifiTransferActivity::class.java))
         }
     }
 

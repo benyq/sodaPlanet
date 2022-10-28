@@ -33,6 +33,17 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures.dataBinding = true
+
+    sourceSets {
+        main {
+            if (transaction.toBoolean()) {
+                manifest.srcFile 'src/main/moduleManifest/AndroidManifest.xml'
+            }else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
 }
 
 dependencies {
