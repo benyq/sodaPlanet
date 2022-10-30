@@ -147,6 +147,7 @@ class TransactionAnalysisViewModel(application: Application): BaseViewModel(appl
 
             var totalAmount = 0f
             data.forEach { kv->
+                totalAmount = 0f
                 kv.value.forEach { record->
                     totalAmount += record.amount.toNumberDefault(0f)
                 }

@@ -83,8 +83,8 @@ class AboutAppActivity : BaseActivity<ActivityAboutAppBinding>() {
         val request = DownloadManager.Request(Uri.parse(downloadUrl))
 
         //构建通知栏样式
-        request.setTitle("测试下载标题")
-        request.setDescription("测试下载的内容文本")
+        request.setTitle("苏打星球")
+        request.setDescription("下载最新版本Apk")
 
         //下载或下载完成的时候显示通知栏
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE or DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
