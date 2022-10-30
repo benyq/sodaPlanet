@@ -1,6 +1,7 @@
 package com.benyq.sodaplanet.transaction.ui.add
 
 import android.app.Application
+import com.benyq.sodaplanet.base.ext.toNumberDefault
 import com.benyq.sodaplanet.base.ui.BaseViewModel
 import com.benyq.sodaplanet.base.room.entity.TransactionRecord
 import com.benyq.sodaplanet.base.room.sodaPlanetDB
@@ -43,10 +44,6 @@ class TransactionAddRecordViewModel(application: Application) : BaseViewModel(ap
     }
 
     private fun yuan2fen(amount: String): String {
-        return if (amount.contains(".")) {
-            amount.replace(".", "")
-        }else {
-            "${amount}00"
-        }
+        return (amount.toNumberDefault(0f) * 100).toInt().toString()
     }
 }
