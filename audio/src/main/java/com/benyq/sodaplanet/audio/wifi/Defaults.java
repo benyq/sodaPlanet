@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.benyq.sodaplanet.audio;
+package com.benyq.sodaplanet.audio.wifi;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,29 +43,8 @@ public class Defaults {
         }
     };
 
-    public static final String HTML_STRING = "<html>"
-            + "<head><title>Air Drop</title>"
-            + "<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\">"
-            + "</head>"
-            + "<body>"
-            + "<form action=\"\" method=\"post\" enctype=\"multipart/form-data\" name=\"form1\" id=\"form1\">"
-            + "<label><input type=\"file\" name=\"file\" id=\"file\" /></label>"
-            + "<input type=\"submit\" name=\"button\" id=\"button\" value=\"Submit\" />"
-            + "</form></body></html>";
-
     private final static String root = "file:///android_asset/uploader/";
     private final static String indexPage = "index.html";
-    private final static int port = 8080;
+    public final static int port = 10086;
 
-    public static String getRoot() {
-        return root;
-    }
-
-    public static String getIndexPage() {
-        return indexPage;
-    }
-
-    public static int getPort() {
-        return port;
-    }
 }

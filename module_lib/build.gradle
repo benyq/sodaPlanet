@@ -79,7 +79,9 @@ dependencies {
     api 'com.squareup.retrofit2:converter-gson:2.9.0'
     api 'com.squareup.okhttp3:logging-interceptor:4.9.2'
 
-
     //https://github.com/NanoHttpd/nanohttpd
     api 'org.nanohttpd:nanohttpd:2.3.1'
+
+    // 权限请求框架：https://github.com/getActivity/XXPermissions
+    api 'com.github.getActivity:XXPermissions:16.2'
 }

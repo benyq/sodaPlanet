@@ -1,4 +1,4 @@
-if (bookListening.toBoolean()) {
+if (audio.toBoolean()) {
     apply plugin: 'com.android.application'
 }else {
     apply plugin: 'com.android.library'
@@ -13,7 +13,7 @@ android {
     defaultConfig {
         minSdk rootProject.min_sdk
         targetSdk rootProject.target_sdk
-        if (bookListening.toBoolean()) {
+        if (audio.toBoolean()) {
             applicationId "com.benyq.sodaplanet.audio"
         }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -48,6 +48,9 @@ android {
 
 dependencies {
 
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.4.+'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

@@ -12,7 +12,7 @@ import kotlinx.parcelize.Parcelize
  * @email 1520063035@qq.com
  * 记账实体类
  */
-@Entity(tableName = "transaction_record")
+@Entity(tableName = "t_transaction_record")
 @Parcelize
 data class TransactionRecord(
     //金额, 分为单位，1元 == 100分

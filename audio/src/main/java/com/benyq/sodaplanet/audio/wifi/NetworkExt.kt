@@ -1,4 +1,4 @@
-package com.benyq.sodaplanet.audio
+package com.benyq.sodaplanet.audio.wifi
 
 import android.content.Context
 import android.net.ConnectivityManager

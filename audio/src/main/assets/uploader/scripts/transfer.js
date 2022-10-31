@@ -437,7 +437,7 @@ $(function () {
     $(document).ready(function () {
         // events delegate
         $('.files').on('click', '.trash', deleteBook);
-        $('.files').on('click', '.download', downloadBook);
+//        $('.files').on('click', '.download', downloadBook);
 
         initPageStrings();
         fillFilesContainer();

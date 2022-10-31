@@ -69,7 +69,7 @@ dependencies {
     if (!transaction.toBoolean()) {
         implementation project(':transaction')
     }
-    if (!bookListening.toBoolean()) {
-        implementation project(':booklistening')
+    if (!audio.toBoolean()) {
+        implementation project(':audio')
     }
 }

@@ -12,7 +12,7 @@ import com.benyq.sodaplanet.base.room.entity.TransactionRecord
  */
 @Dao
 interface TransactionRecordDao {
-    @Query("select * from transaction_record")
+    @Query("select * from t_transaction_record")
     fun getAll(): List<TransactionRecord>
 
     @Insert
@@ -20,7 +20,7 @@ interface TransactionRecordDao {
 
 
     @Query(
-        "select * from transaction_record where (:consumeType is null or consumeType == :consumeType) " +
+        "select * from t_transaction_record where (:consumeType is null or consumeType == :consumeType) " +
                 "and (:paidType is null or paidType == :paidType)" +
                 "and createTime between :startTime and :endTime order by createTime desc"
     )
@@ -30,7 +30,7 @@ interface TransactionRecordDao {
     ): List<TransactionRecord>
 
     @Query(
-        "select sum(amount) as amount, consumeType, paidType, note, createTime, id from transaction_record where createTime " +
+        "select sum(amount) as amount, consumeType, paidType, note, createTime, id from t_transaction_record where createTime " +
                 "between :startTime and :endTime group by consumeType order by createTime desc"
     )
     fun getByConsume(startTime: Long, endTime: Long): List<TransactionRecord>
