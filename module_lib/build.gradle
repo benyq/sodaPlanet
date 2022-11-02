@@ -84,4 +84,7 @@ dependencies {
 
     // 权限请求框架：https://github.com/getActivity/XXPermissions
     api 'com.github.getActivity:XXPermissions:16.2'
+
+    //图像处理库Toolkit
+    api 'com.github.android:renderscript-intrinsics-replacement-toolkit:b6363490c3'
 }
