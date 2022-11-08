@@ -1,4 +1,4 @@
-package com.benyq.sodaplanet
+package com.benyq.sodaplanet.ui
 
 import android.app.DownloadManager
 import android.content.BroadcastReceiver
@@ -11,6 +11,8 @@ import android.os.Bundle
 import android.os.Environment
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.benyq.sodaplanet.net.entity.ApkVersionEntity
+import com.benyq.sodaplanet.BuildConfig
 import com.benyq.sodaplanet.base.ext.launchAndRepeatWithViewLifecycle
 import com.benyq.sodaplanet.base.ext.toast
 import com.benyq.sodaplanet.base.ui.BaseActivity
@@ -19,9 +21,6 @@ import com.benyq.sodaplanet.databinding.ActivityAboutAppBinding
 import com.orhanobut.logger.Logger
 import kotlinx.coroutines.*
 import java.io.File
-import java.util.concurrent.Executors
-import java.util.concurrent.ScheduledExecutorService
-import java.util.concurrent.TimeUnit
 
 class AboutAppActivity : BaseActivity<ActivityAboutAppBinding>() {
 

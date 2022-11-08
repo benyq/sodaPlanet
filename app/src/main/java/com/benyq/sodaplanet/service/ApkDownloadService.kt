@@ -1,4 +1,4 @@
-package com.benyq.sodaplanet
+package com.benyq.sodaplanet.service
 
 import android.app.Service
 import android.content.Intent

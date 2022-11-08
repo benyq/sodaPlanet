@@ -3,6 +3,7 @@ package com.benyq.sodaplanet
 import android.app.Application
 import com.benyq.sodaplanet.base.CommonModuleInit
 import com.benyq.sodaplanet.base.net.RetrofitFactory
+import com.benyq.sodaplanet.net.SodaPlanetApi
 
 /**
  *

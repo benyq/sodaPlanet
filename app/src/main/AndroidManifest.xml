@@ -18,21 +18,21 @@
         android:theme="@style/Theme.SodaPlanet"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".AboutAppActivity"
+            android:name=".ui.AboutAppActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SettingActivity"
+            android:name=".ui.SettingActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

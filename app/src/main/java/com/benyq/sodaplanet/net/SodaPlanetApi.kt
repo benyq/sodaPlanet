@@ -1,6 +1,7 @@
-package com.benyq.sodaplanet
+package com.benyq.sodaplanet.net
 
-import com.benyq.sodaplanet.base.net.RetrofitFactory
+import com.benyq.sodaplanet.net.entity.ApkVersionEntity
+import com.benyq.sodaplanet.net.entity.AppEntity
 import retrofit2.http.GET
 
 /**

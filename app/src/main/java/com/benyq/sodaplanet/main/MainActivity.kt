@@ -1,4 +1,4 @@
-package com.benyq.sodaplanet
+package com.benyq.sodaplanet.main
 
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable

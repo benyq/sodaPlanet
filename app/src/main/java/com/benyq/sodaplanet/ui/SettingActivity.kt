@@ -1,7 +1,6 @@
-package com.benyq.sodaplanet
+package com.benyq.sodaplanet.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.benyq.sodaplanet.base.ui.BaseActivity
 import com.benyq.sodaplanet.databinding.ActivitySettingBinding

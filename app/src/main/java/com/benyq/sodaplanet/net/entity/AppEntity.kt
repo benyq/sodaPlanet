@@ -1,4 +1,4 @@
-package com.benyq.sodaplanet
+package com.benyq.sodaplanet.net.entity
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

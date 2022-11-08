@@ -1,4 +1,4 @@
-package com.benyq.sodaplanet
+package com.benyq.sodaplanet.main
 
 import android.app.Application
 import android.os.Build

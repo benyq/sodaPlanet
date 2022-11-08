@@ -1,4 +1,4 @@
-package com.benyq.sodaplanet
+package com.benyq.sodaplanet.main
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,8 @@ import com.benyq.sodaplanet.base.ext.appCtx
 import com.benyq.sodaplanet.base.ext.clipboardRead
 import com.benyq.sodaplanet.base.ext.runOnUIThread
 import com.benyq.sodaplanet.base.ext.toast
+import com.benyq.sodaplanet.net.entity.AppEntity
+import com.benyq.sodaplanet.sodaApi
 import com.drake.serialize.serialize.serial
 import com.orhanobut.logger.Logger
 import kotlinx.coroutines.CoroutineScope

@@ -1,7 +1,9 @@
-package com.benyq.sodaplanet
+package com.benyq.sodaplanet.ui
 
 import android.app.Application
+import com.benyq.sodaplanet.net.entity.ApkVersionEntity
 import com.benyq.sodaplanet.base.ui.BaseViewModel
+import com.benyq.sodaplanet.sodaApi
 import com.orhanobut.logger.Logger
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
