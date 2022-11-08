@@ -19,8 +19,9 @@ import com.tencent.mmkv.MMKV
 object CommonModuleInit {
 
     private const val ModuleTransaction = "com.benyq.sodaplanet.transaction.TransactionInit"
+    private const val ModuleStudy = "com.benyq.sodaplanet.study.StudyInit"
 
-    private var initModuleNames = arrayOf(ModuleTransaction)
+    private var initModuleNames = arrayOf(ModuleTransaction, ModuleStudy)
 
 
     //这个方法包含 最基础的初始化方法，以及其他module的初始化
