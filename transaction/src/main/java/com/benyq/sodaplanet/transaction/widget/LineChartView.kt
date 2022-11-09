@@ -9,8 +9,6 @@ import android.view.View
 import com.benyq.sodaplanet.base.ext.clamp
 import com.benyq.sodaplanet.base.ext.dp
 import com.benyq.sodaplanet.base.ext.textHeight
-import com.orhanobut.logger.Logger
-import kotlin.math.max
 
 /**
  *
