@@ -40,6 +40,7 @@ dependencies {
     api 'androidx.core:core-ktx:1.9.0'
     api 'androidx.appcompat:appcompat:1.5.1'
     api 'com.google.android.material:material:1.7.0'
+    api 'androidx.media:media:1.6.0'
 
     //room
     api "androidx.room:room-runtime:$rootProject.roomVersion"
@@ -87,4 +88,9 @@ dependencies {
 
     //图像处理库Toolkit
     api 'com.github.android:renderscript-intrinsics-replacement-toolkit:b6363490c3'
+
+    //exoplayer
+    api 'com.google.android.exoplayer:exoplayer-core:2.18.1'
+    api 'com.google.android.exoplayer:extension-okhttp:2.18.1'
+
 }

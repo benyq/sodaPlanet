@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.benyq.sodaplanet.base.ext.fullScreen
+import com.benyq.sodaplanet.base.ext.setStatusBarMode
 import com.benyq.sodaplanet.transaction.data.TransactionIntentExtra
 
 class TransactionActivity : AppCompatActivity() {

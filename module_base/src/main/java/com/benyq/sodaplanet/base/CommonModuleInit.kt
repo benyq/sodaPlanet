@@ -19,7 +19,7 @@ import com.tencent.mmkv.MMKV
 object CommonModuleInit {
 
     private const val ModuleTransaction = "com.benyq.sodaplanet.transaction.TransactionInit"
-    private const val ModuleStudy = "com.benyq.sodaplanet.study.StudyInit"
+    private const val ModuleStudy = "com.benyq.sodaplanet.music.MusicInit"
 
     private var initModuleNames = arrayOf(ModuleTransaction, ModuleStudy)
 
